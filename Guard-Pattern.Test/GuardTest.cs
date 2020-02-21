@@ -243,7 +243,7 @@ namespace Guard_Pattern.Test
             Guard.AgainstNumberOutOfRange(money, "Money", 500, 600);
         }
 
-        [TestMethod]        
+        [TestMethod]
         public void Test_Number_AgainstNumberOutOfRange_Valid()
         {
             int money = 1000;
@@ -269,14 +269,40 @@ namespace Guard_Pattern.Test
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void Test_URL_AgainstInValidURL()
-        {            
+        {
             Guard.AgainstInValidURL("h://nilavpatel.github.io/", "URL");
         }
 
-        [TestMethod]        
+        [TestMethod]
         public void Test_URL_AgainstInValidURL_Valid()
         {
             Guard.AgainstInValidURL("https://nilavpatel.github.io/", "URL");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void Test_EmailId_AgainstInValidEmailId()
+        {
+            Guard.AgainstInValidEmailId("nilavpatel@1992@gmail.com", "EmailId");
+        }
+
+        [TestMethod]
+        public void Test_EmailId_AgainstInValidEmailId_Valid()
+        {
+            Guard.AgainstInValidEmailId("nilavpatel1992@gmail.com", "EmailId");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void Test_Guid_AgainstInValidGuid()
+        {
+            Guard.AgainstInValidGuid("AS52-58695-632563-ASHSJN", "Id");
+        }
+
+        [TestMethod]
+        public void Test_Guid_AgainstInValidGuid_Valid()
+        {
+            Guard.AgainstInValidGuid(Guid.NewGuid().ToString(), "Id");
         }
     }
 }

@@ -69,3 +69,5 @@ Guard.AgainstInValidURL("https://nilavpatel.github.io/", "URL");
 
 ### For Others
 - AgainstInValidURL
+- AgainstInValidEmailId
+- AgainstInValidGuid

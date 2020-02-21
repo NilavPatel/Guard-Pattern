@@ -447,16 +447,48 @@ namespace Guard_Pattern
             AgainstNullOrEmpty(argument, argumentName);
             if (!IsValidURL(argument))
             {
-                throw new ArgumentException(string.Format("Argument {0} is not valid URL.", argumentName));
+                throw new ArgumentException(string.Format("Argument {0} is not valid URL", argumentName));
+            }
+        }
+
+        public static void AgainstInValidEmailId(string argument, string argumentName)
+        {
+            AgainstNullOrEmpty(argument, argumentName);
+            if (!IsValidEmailId(argument))
+            {
+                throw new ArgumentException(string.Format("Argument {0} is not valid emailid", argumentName));
+            }
+        }
+
+        public static void AgainstInValidGuid(string argument, string argumentName)
+        {
+            AgainstNullOrEmpty(argument, argumentName);
+            if (!IsValidGuid(argument))
+            {
+                throw new ArgumentException(string.Format("Argument {0} is not valid Guid", argumentName));
             }
         }
 
         private static bool IsValidURL(string value)
         {
-            return Uri.TryCreate(value, UriKind.Absolute, out Uri result) &&
+            Uri result;
+            return Uri.TryCreate(value, UriKind.Absolute, out result) &&
                    (result.Scheme == "http" || result.Scheme == "https");
         }
 
+        private static bool IsValidEmailId(string value)
+        {
+            return Regex.IsMatch(value,
+               @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
+               @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-0-9a-z]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$",
+               RegexOptions.IgnoreCase);
+        }
+
+        private static bool IsValidGuid(string value)
+        {
+            Guid result;
+            return Guid.TryParse(value, out result);
+        }
         #endregion
     }
 }
