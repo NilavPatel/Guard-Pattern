@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1000
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Guard-Pattern", "Guard-Pattern\Guard-Pattern.csproj", "{5E5773B2-631C-49E4-B7E2-F353580D9EFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Guard-Pattern.Test", "Guard-Pattern.Test\Guard-Pattern.Test.csproj", "{E4EA29E7-7B6A-4D0D-BB0B-1C4BEC817731}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5E5773B2-631C-49E4-B7E2-F353580D9EFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E5773B2-631C-49E4-B7E2-F353580D9EFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E5773B2-631C-49E4-B7E2-F353580D9EFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E5773B2-631C-49E4-B7E2-F353580D9EFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4EA29E7-7B6A-4D0D-BB0B-1C4BEC817731}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4EA29E7-7B6A-4D0D-BB0B-1C4BEC817731}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4EA29E7-7B6A-4D0D-BB0B-1C4BEC817731}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4EA29E7-7B6A-4D0D-BB0B-1C4BEC817731}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {49510AA8-7199-4677-8D93-6673D93A490B}
+	EndGlobalSection
+EndGlobal
