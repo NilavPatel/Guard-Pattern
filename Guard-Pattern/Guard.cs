@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 namespace Guard_Pattern
 {
     /// <summary>
-    /// The Guard class, which contains basic methods for object, string, int, double, decimal, datetime, timespan, URL validations.    
+    /// The Guard class, which contains basic methods for object, string, int, double, decimal, datetime, timespan, URL, bool validations.    
     /// </summary>
     public static class Guard
     {
@@ -442,6 +442,11 @@ namespace Guard_Pattern
 
         #region For Others
 
+        /// <summary>
+        /// Only Absolute URLs are validated.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static void AgainstInValidURL(string argument, string argumentName)
         {
             AgainstNullOrEmpty(argument, argumentName);
@@ -488,6 +493,24 @@ namespace Guard_Pattern
         {
             Guid result;
             return Guid.TryParse(value, out result);
+        }
+        #endregion
+
+        #region For bool
+        public static void AgainstTrue(bool argument, string argumentName)
+        {
+            if (argument == true)
+            {
+                throw new ArgumentException(string.Format("Argument {0} is not allowing to be true", argumentName));
+            }
+        }
+
+        public static void AgainstFalse(bool argument, string argumentName)
+        {
+            if (argument == false)
+            {
+                throw new ArgumentException(string.Format("Argument {0} is not allowing to be false", argumentName));
+            }
         }
         #endregion
     }

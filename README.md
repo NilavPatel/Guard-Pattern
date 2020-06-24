@@ -20,7 +20,7 @@ Guard.AgainstNumberNegative(money, "Money");
 
 Guard.AgainstDateTimeGreaterThan(startDate, "StartDate", DateTime.Now);
 
-Guard.AgainstInValidURL("https://nilavpatel.github.io/", "URL");
+Guard.AgainstInValidURL("https://nilavpatel.github.io", "URL");
 
 ````
 
@@ -71,3 +71,7 @@ Guard.AgainstInValidURL("https://nilavpatel.github.io/", "URL");
 - AgainstInValidURL
 - AgainstInValidEmailId
 - AgainstInValidGuid
+
+### For bool
+- AgainstTrue
+- AgainstFalse

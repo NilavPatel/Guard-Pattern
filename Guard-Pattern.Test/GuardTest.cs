@@ -276,7 +276,7 @@ namespace Guard_Pattern.Test
         [TestMethod]
         public void Test_URL_AgainstInValidURL_Valid()
         {
-            Guard.AgainstInValidURL("https://nilavpatel.github.io/", "URL");
+            Guard.AgainstInValidURL("https://nilavpatel.github.io", "URL");
         }
 
         [TestMethod]
@@ -303,6 +303,32 @@ namespace Guard_Pattern.Test
         public void Test_Guid_AgainstInValidGuid_Valid()
         {
             Guard.AgainstInValidGuid(Guid.NewGuid().ToString(), "Id");
+        }
+
+        [TestMethod]
+        public void Test_Guid_AgainstFalse_Valid()
+        {
+            Guard.AgainstFalse(true, "Active");
+        }
+
+        [TestMethod]
+        public void Test_Guid_AgainstTrue_Valid()
+        {
+            Guard.AgainstTrue(false, "Active");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void Test_Guid_AgainstFalse_InValid()
+        {
+            Guard.AgainstFalse(false, "Active");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void Test_Guid_AgainstTrue_InValid()
+        {
+            Guard.AgainstTrue(true, "Active");
         }
     }
 }
