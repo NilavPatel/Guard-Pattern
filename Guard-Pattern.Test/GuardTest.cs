@@ -1,4 +1,5 @@
 ﻿using System;
+using Guard_Clauses;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Guard_Pattern.Test
@@ -329,6 +330,14 @@ namespace Guard_Pattern.Test
         public void Test_Guid_Against_True_InValid()
         {
             Guard.Against.True(true, "Active");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void Test_Guid_Against_MoreThanMaxLimit_InValid()
+        {
+            var value = Int16.MaxValue + 1;
+            Guard.Against.MoreThanMaxLimit(value, "Value");
         }
     }
 }

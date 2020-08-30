@@ -1,12 +1,12 @@
 using System;
 using System.Text.RegularExpressions;
 
-namespace Guard_Pattern
+namespace Guard_Clauses
 {
-    public class GuardExtensions
+    public static class GuardExtensions
     {
         #region For Object
-        public static Void Null<T>(this IGuardClause guardClause, T argument, string argumentName)
+        public static void Null<T>(this IGuardClause guardClause, T argument, string argumentName)
         {
             if (argument == null)
             {
@@ -16,7 +16,7 @@ namespace Guard_Pattern
         #endregion
 
         #region For String
-        public static Void NullOrEmpty(this IGuardClause guardClause, string argument, string argumentName)
+        public static void NullOrEmpty(this IGuardClause guardClause, string argument, string argumentName)
         {
             if (string.IsNullOrEmpty(argument))
             {
@@ -24,7 +24,7 @@ namespace Guard_Pattern
             }
         }
 
-        public static Void NullOrWhiteSpace(this IGuardClause guardClause, string argument, string argumentName)
+        public static void NullOrWhiteSpace(this IGuardClause guardClause, string argument, string argumentName)
         {
             if (string.IsNullOrWhiteSpace(argument))
             {
@@ -32,7 +32,7 @@ namespace Guard_Pattern
             }
         }
 
-        public static Void LeadingAndTailingSpace(this IGuardClause guardClause, string argument, string argumentName)
+        public static void LeadingAndTailingSpace(this IGuardClause guardClause, string argument, string argumentName)
         {
             if (argument.Trim() != argument)
             {
@@ -40,7 +40,7 @@ namespace Guard_Pattern
             }
         }
 
-        public static Void MinimumLength(this IGuardClause guardClause, string argument, string argumentName, int minLength)
+        public static void MinimumLength(this IGuardClause guardClause, string argument, string argumentName, int minLength)
         {
             if (argument.Length < minLength)
             {
@@ -48,7 +48,7 @@ namespace Guard_Pattern
             }
         }
 
-        public static Void MaximumLength(this IGuardClause guardClause, string argument, string argumentName, int maxLength)
+        public static void MaximumLength(this IGuardClause guardClause, string argument, string argumentName, int maxLength)
         {
             if (argument.Length > maxLength)
             {
@@ -56,7 +56,7 @@ namespace Guard_Pattern
             }
         }
 
-        public static Void SpecialCharacters(this IGuardClause guardClause, string argument, string argumentName)
+        public static void SpecialCharacters(this IGuardClause guardClause, string argument, string argumentName)
         {
             if (HasSpecialChars(argument))
             {
@@ -64,7 +64,7 @@ namespace Guard_Pattern
             }
         }
 
-        public static Void Digits(this IGuardClause guardClause, string argument, string argumentName)
+        public static void Digits(this IGuardClause guardClause, string argument, string argumentName)
         {
             if (HasDigits(argument))
             {
@@ -72,7 +72,7 @@ namespace Guard_Pattern
             }
         }
 
-        public static Void Alphabet(this IGuardClause guardClause, string argument, string argumentName)
+        public static void Alphabet(this IGuardClause guardClause, string argument, string argumentName)
         {
             if (HasAlphabets(argument))
             {
@@ -80,7 +80,7 @@ namespace Guard_Pattern
             }
         }
 
-        public static Void LowerCase(this IGuardClause guardClause, string argument, string argumentName)
+        public static void LowerCase(this IGuardClause guardClause, string argument, string argumentName)
         {
             if (HasLowerCase(argument))
             {
@@ -88,7 +88,7 @@ namespace Guard_Pattern
             }
         }
 
-        public static Void UpperCase(this IGuardClause guardClause, string argument, string argumentName)
+        public static void UpperCase(this IGuardClause guardClause, string argument, string argumentName)
         {
             if (HasUpperCase(argument))
             {
@@ -96,7 +96,7 @@ namespace Guard_Pattern
             }
         }
 
-        public static Void Space(this IGuardClause guardClause, string argument, string argumentName)
+        public static void Space(this IGuardClause guardClause, string argument, string argumentName)
         {
             if (argument.Contains(" "))
             {
@@ -156,7 +156,7 @@ namespace Guard_Pattern
         #endregion
 
         #region For Integer
-        public static Void NumberLessThan(this IGuardClause guardClause, int argument, string argumentName, int min)
+        public static void NumberLessThan(this IGuardClause guardClause, int argument, string argumentName, int min)
         {
             if (argument < min)
             {
@@ -164,7 +164,7 @@ namespace Guard_Pattern
             }
         }
 
-        public static Void NumberGreaterThan(this IGuardClause guardClause, int argument, string argumentName, int max)
+        public static void NumberGreaterThan(this IGuardClause guardClause, int argument, string argumentName, int max)
         {
             if (argument > max)
             {
@@ -172,7 +172,7 @@ namespace Guard_Pattern
             }
         }
 
-        public static Void NumberLessThanOrEqual(this IGuardClause guardClause, int argument, string argumentName, int min)
+        public static void NumberLessThanOrEqual(this IGuardClause guardClause, int argument, string argumentName, int min)
         {
             if (argument <= min)
             {
@@ -180,7 +180,7 @@ namespace Guard_Pattern
             }
         }
 
-        public static Void NumberGreaterThanOrEqual(this IGuardClause guardClause, int argument, string argumentName, int max)
+        public static void NumberGreaterThanOrEqual(this IGuardClause guardClause, int argument, string argumentName, int max)
         {
             if (argument >= max)
             {
@@ -188,7 +188,7 @@ namespace Guard_Pattern
             }
         }
 
-        public static Void NumberZero(this IGuardClause guardClause, int argument, string argumentName)
+        public static void NumberZero(this IGuardClause guardClause, int argument, string argumentName)
         {
             if (argument == 0)
             {
@@ -196,7 +196,7 @@ namespace Guard_Pattern
             }
         }
 
-        public static Void NumberNegative(this IGuardClause guardClause, int argument, string argumentName)
+        public static void NumberNegative(this IGuardClause guardClause, int argument, string argumentName)
         {
             if (argument < 0)
             {
@@ -204,7 +204,7 @@ namespace Guard_Pattern
             }
         }
 
-        public static Void NumberNegativeOrZero(this IGuardClause guardClause, int argument, string argumentName)
+        public static void NumberNegativeOrZero(this IGuardClause guardClause, int argument, string argumentName)
         {
             if (argument <= 0)
             {
@@ -212,7 +212,7 @@ namespace Guard_Pattern
             }
         }
 
-        public static Void NumberOutOfRange(this IGuardClause guardClause, int argument, string argumentName, int startRange, int endRange)
+        public static void NumberOutOfRange(this IGuardClause guardClause, int argument, string argumentName, int startRange, int endRange)
         {
             if (argument < startRange || argument > endRange)
             {
@@ -222,7 +222,7 @@ namespace Guard_Pattern
         #endregion
 
         #region For Double
-        public static Void NumberLessThan(this IGuardClause guardClause, double argument, string argumentName, double min)
+        public static void NumberLessThan(this IGuardClause guardClause, double argument, string argumentName, double min)
         {
             if (argument < min)
             {
@@ -230,7 +230,7 @@ namespace Guard_Pattern
             }
         }
 
-        public static Void NumberGreaterThan(this IGuardClause guardClause, double argument, string argumentName, double max)
+        public static void NumberGreaterThan(this IGuardClause guardClause, double argument, string argumentName, double max)
         {
             if (argument > max)
             {
@@ -238,7 +238,7 @@ namespace Guard_Pattern
             }
         }
 
-        public static Void NumberLessThanOrEqual(this IGuardClause guardClause, double argument, string argumentName, double min)
+        public static void NumberLessThanOrEqual(this IGuardClause guardClause, double argument, string argumentName, double min)
         {
             if (argument <= min)
             {
@@ -246,7 +246,7 @@ namespace Guard_Pattern
             }
         }
 
-        public static Void NumberGreaterThanOrEqual(this IGuardClause guardClause, double argument, string argumentName, double max)
+        public static void NumberGreaterThanOrEqual(this IGuardClause guardClause, double argument, string argumentName, double max)
         {
             if (argument >= max)
             {
@@ -254,7 +254,7 @@ namespace Guard_Pattern
             }
         }
 
-        public static Void NumberZero(this IGuardClause guardClause, double argument, string argumentName)
+        public static void NumberZero(this IGuardClause guardClause, double argument, string argumentName)
         {
             if (argument == 0)
             {
@@ -262,7 +262,7 @@ namespace Guard_Pattern
             }
         }
 
-        public static Void NumberNegative(this IGuardClause guardClause, double argument, string argumentName)
+        public static void NumberNegative(this IGuardClause guardClause, double argument, string argumentName)
         {
             if (argument < 0)
             {
@@ -270,7 +270,7 @@ namespace Guard_Pattern
             }
         }
 
-        public static Void NumberNegativeOrZero(this IGuardClause guardClause, double argument, string argumentName)
+        public static void NumberNegativeOrZero(this IGuardClause guardClause, double argument, string argumentName)
         {
             if (argument <= 0)
             {
@@ -278,7 +278,7 @@ namespace Guard_Pattern
             }
         }
 
-        public static Void NumberOutOfRange(this IGuardClause guardClause, double argument, string argumentName, double startRange, double endRange)
+        public static void NumberOutOfRange(this IGuardClause guardClause, double argument, string argumentName, double startRange, double endRange)
         {
             if (argument < startRange || argument > endRange)
             {
@@ -288,7 +288,7 @@ namespace Guard_Pattern
         #endregion
 
         #region For Decimal
-        public static Void NumberLessThan(this IGuardClause guardClause, decimal argument, string argumentName, decimal min)
+        public static void NumberLessThan(this IGuardClause guardClause, decimal argument, string argumentName, decimal min)
         {
             if (argument < min)
             {
@@ -296,7 +296,7 @@ namespace Guard_Pattern
             }
         }
 
-        public static Void NumberGreaterThan(this IGuardClause guardClause, decimal argument, string argumentName, decimal max)
+        public static void NumberGreaterThan(this IGuardClause guardClause, decimal argument, string argumentName, decimal max)
         {
             if (argument > max)
             {
@@ -304,7 +304,7 @@ namespace Guard_Pattern
             }
         }
 
-        public static Void NumberLessThanOrEqual(this IGuardClause guardClause, decimal argument, string argumentName, decimal min)
+        public static void NumberLessThanOrEqual(this IGuardClause guardClause, decimal argument, string argumentName, decimal min)
         {
             if (argument <= min)
             {
@@ -312,7 +312,7 @@ namespace Guard_Pattern
             }
         }
 
-        public static Void NumberGreaterThanOrEqual(this IGuardClause guardClause, decimal argument, string argumentName, decimal max)
+        public static void NumberGreaterThanOrEqual(this IGuardClause guardClause, decimal argument, string argumentName, decimal max)
         {
             if (argument >= max)
             {
@@ -320,7 +320,7 @@ namespace Guard_Pattern
             }
         }
 
-        public static Void NumberZero(this IGuardClause guardClause, decimal argument, string argumentName)
+        public static void NumberZero(this IGuardClause guardClause, decimal argument, string argumentName)
         {
             if (argument == 0)
             {
@@ -328,7 +328,7 @@ namespace Guard_Pattern
             }
         }
 
-        public static Void NumberNegative(this IGuardClause guardClause, decimal argument, string argumentName)
+        public static void NumberNegative(this IGuardClause guardClause, decimal argument, string argumentName)
         {
             if (argument < 0)
             {
@@ -336,7 +336,7 @@ namespace Guard_Pattern
             }
         }
 
-        public static Void NumberNegativeOrZero(this IGuardClause guardClause, decimal argument, string argumentName)
+        public static void NumberNegativeOrZero(this IGuardClause guardClause, decimal argument, string argumentName)
         {
             if (argument <= 0)
             {
@@ -344,7 +344,7 @@ namespace Guard_Pattern
             }
         }
 
-        public static Void NumberOutOfRange(this IGuardClause guardClause, decimal argument, string argumentName, decimal startRange, decimal endRange)
+        public static void NumberOutOfRange(this IGuardClause guardClause, decimal argument, string argumentName, decimal startRange, decimal endRange)
         {
             if (argument < startRange || argument > endRange)
             {
@@ -354,7 +354,7 @@ namespace Guard_Pattern
         #endregion
 
         #region For DateTime
-        public static Void DateTimeLessThan(this IGuardClause guardClause, DateTime argument, string argumentName, DateTime min)
+        public static void DateTimeLessThan(this IGuardClause guardClause, DateTime argument, string argumentName, DateTime min)
         {
             if (argument < min)
             {
@@ -362,7 +362,7 @@ namespace Guard_Pattern
             }
         }
 
-        public static Void DateTimeGreaterThan(this IGuardClause guardClause, DateTime argument, string argumentName, DateTime max)
+        public static void DateTimeGreaterThan(this IGuardClause guardClause, DateTime argument, string argumentName, DateTime max)
         {
             if (argument > max)
             {
@@ -370,7 +370,7 @@ namespace Guard_Pattern
             }
         }
 
-        public static Void DateTimeLessThanOrEqual(this IGuardClause guardClause, DateTime argument, string argumentName, DateTime min)
+        public static void DateTimeLessThanOrEqual(this IGuardClause guardClause, DateTime argument, string argumentName, DateTime min)
         {
             if (argument <= min)
             {
@@ -378,7 +378,7 @@ namespace Guard_Pattern
             }
         }
 
-        public static Void DateTimeGreaterThanOrEqual(this IGuardClause guardClause, DateTime argument, string argumentName, DateTime max)
+        public static void DateTimeGreaterThanOrEqual(this IGuardClause guardClause, DateTime argument, string argumentName, DateTime max)
         {
             if (argument >= max)
             {
@@ -386,7 +386,7 @@ namespace Guard_Pattern
             }
         }
 
-        public static Void DateTimeOutOfRange(this IGuardClause guardClause, DateTime argument, string argumentName, DateTime startRange, DateTime endRange)
+        public static void DateTimeOutOfRange(this IGuardClause guardClause, DateTime argument, string argumentName, DateTime startRange, DateTime endRange)
         {
             if (argument < startRange || argument > endRange)
             {
@@ -396,7 +396,7 @@ namespace Guard_Pattern
         #endregion
 
         #region For Timespan
-        public static Void TimeSpanLessThan(this IGuardClause guardClause, TimeSpan argument, string argumentName, TimeSpan min)
+        public static void TimeSpanLessThan(this IGuardClause guardClause, TimeSpan argument, string argumentName, TimeSpan min)
         {
             if (argument < min)
             {
@@ -404,7 +404,7 @@ namespace Guard_Pattern
             }
         }
 
-        public static Void TimeSpanGreaterThan(this IGuardClause guardClause, TimeSpan argument, string argumentName, TimeSpan max)
+        public static void TimeSpanGreaterThan(this IGuardClause guardClause, TimeSpan argument, string argumentName, TimeSpan max)
         {
             if (argument > max)
             {
@@ -412,7 +412,7 @@ namespace Guard_Pattern
             }
         }
 
-        public static Void TimeSpanLessThanOrEqual(this IGuardClause guardClause, TimeSpan argument, string argumentName, TimeSpan min)
+        public static void TimeSpanLessThanOrEqual(this IGuardClause guardClause, TimeSpan argument, string argumentName, TimeSpan min)
         {
             if (argument <= min)
             {
@@ -420,7 +420,7 @@ namespace Guard_Pattern
             }
         }
 
-        public static Void TimeSpanGreaterThanOrEqual(this IGuardClause guardClause, TimeSpan argument, string argumentName, TimeSpan max)
+        public static void TimeSpanGreaterThanOrEqual(this IGuardClause guardClause, TimeSpan argument, string argumentName, TimeSpan max)
         {
             if (argument >= max)
             {
@@ -428,7 +428,7 @@ namespace Guard_Pattern
             }
         }
 
-        public static Void TimeSpanOutOfRange(this IGuardClause guardClause, TimeSpan argument, string argumentName, TimeSpan startRange, TimeSpan endRange)
+        public static void TimeSpanOutOfRange(this IGuardClause guardClause, TimeSpan argument, string argumentName, TimeSpan startRange, TimeSpan endRange)
         {
             if (argument < startRange || argument > endRange)
             {
@@ -444,27 +444,27 @@ namespace Guard_Pattern
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static Void InValidURL(this IGuardClause guardClause, string argument, string argumentName)
+        public static void InValidURL(this IGuardClause guardClause, string argument, string argumentName)
         {
-            AgainstNullOrEmpty(argument, argumentName);
+            Guard.Against.NullOrEmpty(argument, argumentName);
             if (!IsValidURL(argument))
             {
                 throw new ArgumentException(string.Format("Argument {0} is not valid URL", argumentName));
             }
         }
 
-        public static Void InValidEmailId(this IGuardClause guardClause, string argument, string argumentName)
+        public static void InValidEmailId(this IGuardClause guardClause, string argument, string argumentName)
         {
-            AgainstNullOrEmpty(argument, argumentName);
+            Guard.Against.NullOrEmpty(argument, argumentName);
             if (!IsValidEmailId(argument))
             {
                 throw new ArgumentException(string.Format("Argument {0} is not valid emailid", argumentName));
             }
         }
 
-        public static Void InValidGuid(this IGuardClause guardClause, string argument, string argumentName)
+        public static void InValidGuid(this IGuardClause guardClause, string argument, string argumentName)
         {
-            AgainstNullOrEmpty(argument, argumentName);
+            Guard.Against.NullOrEmpty(argument, argumentName);
             if (!IsValidGuid(argument))
             {
                 throw new ArgumentException(string.Format("Argument {0} is not valid Guid", argumentName));
@@ -494,7 +494,7 @@ namespace Guard_Pattern
         #endregion
 
         #region For bool
-        public static Void True(this IGuardClause guardClause, bool argument, string argumentName)
+        public static void True(this IGuardClause guardClause, bool argument, string argumentName)
         {
             if (argument == true)
             {
@@ -502,7 +502,7 @@ namespace Guard_Pattern
             }
         }
 
-        public static Void False(this IGuardClause guardClause, bool argument, string argumentName)
+        public static void False(this IGuardClause guardClause, bool argument, string argumentName)
         {
             if (argument == false)
             {

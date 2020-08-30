@@ -1,4 +1,4 @@
-﻿namespace Guard_Pattern
+﻿namespace Guard_Clauses
 {
     public class Guard : IGuardClause
     {

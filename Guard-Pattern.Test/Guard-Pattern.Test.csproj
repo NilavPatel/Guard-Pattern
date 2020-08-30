@@ -49,6 +49,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomGuardClause.cs" />
     <Compile Include="GuardTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -56,9 +57,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Guard-Pattern\Guard-Pattern.csproj">
-      <Project>{5e5773b2-631c-49e4-b7e2-f353580d9eff}</Project>
-      <Name>Guard-Pattern</Name>
+    <ProjectReference Include="..\Gaurd-Clauses\Gaurd-Clauses.csproj">
+      <Project>{528C8FC8-EA5C-40BA-BC45-FA558626A35C}</Project>
+      <Name>Gaurd-Clauses</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
