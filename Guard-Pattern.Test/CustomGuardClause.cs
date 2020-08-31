@@ -1,4 +1,4 @@
-﻿using Guard_Clauses;
+using Guard_Pattern;
 using System;
 
 namespace Guard_Pattern.Test

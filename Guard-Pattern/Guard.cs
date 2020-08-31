@@ -1,17 +1,19 @@
-﻿namespace Guard_Clauses
+﻿using System;
+
+namespace Guard_Pattern
 {
     public class Guard : IGuardClause
     {
-        private static IGuardClause against;
+        private static IGuardClause _against;
         public static IGuardClause Against
         {
             get
             {
-                if (against == null)
+                if (_against == null)
                 {
-                    against = new Guard();
+                    _against = new Guard();
                 }
-                return against;
+                return _against;
             }
         }
 

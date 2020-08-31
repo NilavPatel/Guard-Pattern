@@ -1,7 +1,7 @@
 using System;
 using System.Text.RegularExpressions;
 
-namespace Guard_Clauses
+namespace Guard_Pattern
 {
     public static class GuardExtensions
     {
