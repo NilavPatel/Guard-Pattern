@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Guard_Pattern
+﻿namespace Guard_Pattern
 {
     public class Guard : IGuardClause
     {
