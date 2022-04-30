@@ -6,13 +6,6 @@ namespace Guard_Pattern.Test
     public class GuardTest
     {
         [Fact]
-        public void Test_String_Against_Null()
-        {
-            string name = null;
-            Assert.Throws<ArgumentNullException>(() => Guard.Against.Null(name, "Name"));
-        }
-
-        [Fact]
         public void Test_DateTime_Against_Null()
         {
             DateTime? startDate = null;
@@ -160,6 +153,14 @@ namespace Guard_Pattern.Test
         }
 
         [Fact]
+        public void Test_Number_Against_NumberLessThan_WithMinArgumentName()
+        {
+            int money = 500;
+            var exeception = Assert.Throws<ArgumentException>(() => Guard.Against.NumberLessThan(money, "Money", 1000, "Minimum Value"));
+            Assert.Equal(exeception.Message, "Money is not allowing less than Minimum Value");
+        }
+
+        [Fact]
         public void Test_Number_Against_NumberGreaterThan()
         {
             int money = 1000;
@@ -234,6 +235,42 @@ namespace Guard_Pattern.Test
         {
             DateTime startDate = DateTime.Now;
             Assert.Throws<ArgumentException>(() => Guard.Against.DateTimeLessThanOrEqual(startDate, "StartDate", DateTime.Now.AddDays(1)));
+        }
+
+        [Fact]
+        public void Test_DateTime_Against_DateTimeLessThanOrEqual_WithFormat()
+        {
+            DateTime startDate = DateTime.Now;
+            var exeception = Assert.Throws<ArgumentException>(() => Guard.Against.DateTimeLessThanOrEqual(startDate, "StartDate", DateTime.Now.AddDays(1), string.Empty, "dd/MM/yyyy"));
+            Assert.Equal(exeception.Message, "StartDate is not allowing less than or equals to " + DateTime.Now.AddDays(1).ToString("dd/MM/yyyy"));
+        }
+
+        [Fact]
+        public void Test_DateTime_Against_DateTimeLessThanOrEqual_WithArgumentName()
+        {
+            DateTime startDate = DateTime.Now;
+            var exeception = Assert.Throws<ArgumentException>(() => Guard.Against.DateTimeLessThanOrEqual(startDate, "StartDate", DateTime.Now.AddDays(1), "Tomorrow"));
+            Assert.Equal(exeception.Message, "StartDate is not allowing less than or equals to Tomorrow");
+        }
+
+        [Fact]
+        public void Test_TimeSpan_Against_TimeSpanLessThanOrEqual_WithFormat()
+        {
+            TimeSpan time1 = TimeSpan.FromHours(1);
+            TimeSpan time = DateTime.Now.TimeOfDay;
+            TimeSpan time2 = time.Add(time1);
+            var exeception = Assert.Throws<ArgumentException>(() => Guard.Against.TimeSpanLessThanOrEqual(time, "Start time", time2, string.Empty, @"hh\:mm"));
+            Assert.Equal(exeception.Message, "Start time is not allowing less than or equals to " + time2.ToString(@"hh\:mm"));
+        }
+
+        [Fact]
+        public void Test_TimeSpan_Against_TimeSpanLessThanOrEqual_WithArgumentName()
+        {
+            TimeSpan time1 = TimeSpan.FromHours(1);
+            TimeSpan time = DateTime.Now.TimeOfDay;
+            TimeSpan time2 = time.Add(time1);
+            var exeception = Assert.Throws<ArgumentException>(() => Guard.Against.TimeSpanLessThanOrEqual(time, "Start time", time2, "One Hour"));
+            Assert.Equal(exeception.Message, "Start time is not allowing less than or equals to One Hour");
         }
 
         [Fact]

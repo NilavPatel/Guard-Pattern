@@ -36,7 +36,7 @@ namespace Guard_Pattern
         {
             if (argument.Trim() != argument)
             {
-                throw new ArgumentException(string.Format("Argument {0} is not allowing leading and tailing space", argumentName));
+                throw new ArgumentException(string.Format("{0} is not allowing leading and tailing space", argumentName));
             }
         }
 
@@ -44,7 +44,7 @@ namespace Guard_Pattern
         {
             if (argument.Length < minLength)
             {
-                throw new ArgumentException(string.Format("Argument {0} is not allowing characters less than {1}", argumentName, minLength));
+                throw new ArgumentException(string.Format("{0} is not allowing characters less than {1}", argumentName, minLength));
             }
         }
 
@@ -52,7 +52,7 @@ namespace Guard_Pattern
         {
             if (argument.Length > maxLength)
             {
-                throw new ArgumentException(string.Format("Argument {0} is not allowing characters more than {1}", argumentName, maxLength));
+                throw new ArgumentException(string.Format("{0} is not allowing characters more than {1}", argumentName, maxLength));
             }
         }
 
@@ -60,7 +60,7 @@ namespace Guard_Pattern
         {
             if (HasSpecialChars(argument))
             {
-                throw new ArgumentException(string.Format("Argument {0} is not allowing any special characters", argumentName));
+                throw new ArgumentException(string.Format("{0} is not allowing any special characters", argumentName));
             }
         }
 
@@ -68,7 +68,7 @@ namespace Guard_Pattern
         {
             if (HasDigits(argument))
             {
-                throw new ArgumentException(string.Format("Argument {0} is not allowing any digits", argumentName));
+                throw new ArgumentException(string.Format("{0} is not allowing any digits", argumentName));
             }
         }
 
@@ -76,7 +76,7 @@ namespace Guard_Pattern
         {
             if (HasAlphabets(argument))
             {
-                throw new ArgumentException(string.Format("Argument {0} is not allowing any alphabets", argumentName));
+                throw new ArgumentException(string.Format("{0} is not allowing any alphabets", argumentName));
             }
         }
 
@@ -84,7 +84,7 @@ namespace Guard_Pattern
         {
             if (HasLowerCase(argument))
             {
-                throw new ArgumentException(string.Format("Argument {0} is not allowing lower case", argumentName));
+                throw new ArgumentException(string.Format("{0} is not allowing lower case", argumentName));
             }
         }
 
@@ -92,7 +92,7 @@ namespace Guard_Pattern
         {
             if (HasUpperCase(argument))
             {
-                throw new ArgumentException(string.Format("Argument {0} is not allowing upper case", argumentName));
+                throw new ArgumentException(string.Format("{0} is not allowing upper case", argumentName));
             }
         }
 
@@ -100,7 +100,7 @@ namespace Guard_Pattern
         {
             if (argument.Contains(" "))
             {
-                throw new ArgumentException(string.Format("Argument {0} is not allowing space", argumentName));
+                throw new ArgumentException(string.Format("{0} is not allowing space", argumentName));
             }
         }
 
@@ -156,35 +156,35 @@ namespace Guard_Pattern
         #endregion
 
         #region For Integer
-        public static void NumberLessThan(this IGuardClause guardClause, int argument, string argumentName, int min)
+        public static void NumberLessThan(this IGuardClause guardClause, int argument, string argumentName, int min, string minArgumentName = "")
         {
             if (argument < min)
             {
-                throw new ArgumentException(string.Format("Argument {0} is not allowing less than {1}", argumentName, min));
+                throw new ArgumentException(string.Format("{0} is not allowing less than {1}", argumentName, !string.IsNullOrWhiteSpace(minArgumentName) ? minArgumentName : min.ToString()));
             }
         }
 
-        public static void NumberGreaterThan(this IGuardClause guardClause, int argument, string argumentName, int max)
+        public static void NumberGreaterThan(this IGuardClause guardClause, int argument, string argumentName, int max, string maxArgumentName = "")
         {
             if (argument > max)
             {
-                throw new ArgumentException(string.Format("Argument {0} is not allowing more than {1}", argumentName, max));
+                throw new ArgumentException(string.Format("{0} is not allowing more than {1}", argumentName, !string.IsNullOrWhiteSpace(maxArgumentName) ? maxArgumentName : max.ToString()));
             }
         }
 
-        public static void NumberLessThanOrEqual(this IGuardClause guardClause, int argument, string argumentName, int min)
+        public static void NumberLessThanOrEqual(this IGuardClause guardClause, int argument, string argumentName, int min, string minArgumentName = "")
         {
             if (argument <= min)
             {
-                throw new ArgumentException(string.Format("Argument {0} is not allowing less than or equals to {1}", argumentName, min));
+                throw new ArgumentException(string.Format("{0} is not allowing less than or equals to {1}", argumentName, !string.IsNullOrWhiteSpace(minArgumentName) ? minArgumentName : min.ToString()));
             }
         }
 
-        public static void NumberGreaterThanOrEqual(this IGuardClause guardClause, int argument, string argumentName, int max)
+        public static void NumberGreaterThanOrEqual(this IGuardClause guardClause, int argument, string argumentName, int max, string maxArgumentName = "")
         {
             if (argument >= max)
             {
-                throw new ArgumentException(string.Format("Argument {0} is not allowing greater than or equals to {1}", argumentName, max));
+                throw new ArgumentException(string.Format("{0} is not allowing greater than or equals to {1}", argumentName, !string.IsNullOrWhiteSpace(maxArgumentName) ? maxArgumentName : max.ToString()));
             }
         }
 
@@ -192,7 +192,7 @@ namespace Guard_Pattern
         {
             if (argument == 0)
             {
-                throw new ArgumentException(string.Format("Argument {0} is not allowing 0", argumentName));
+                throw new ArgumentException(string.Format("{0} is not allowing 0", argumentName));
             }
         }
 
@@ -200,7 +200,7 @@ namespace Guard_Pattern
         {
             if (argument < 0)
             {
-                throw new ArgumentException(string.Format("Argument {0} is not allowing negative value", argumentName));
+                throw new ArgumentException(string.Format("{0} is not allowing negative value", argumentName));
             }
         }
 
@@ -208,7 +208,7 @@ namespace Guard_Pattern
         {
             if (argument <= 0)
             {
-                throw new ArgumentException(string.Format("Argument {0} is not allowing negative value or 0", argumentName));
+                throw new ArgumentException(string.Format("{0} is not allowing negative value or 0", argumentName));
             }
         }
 
@@ -216,41 +216,41 @@ namespace Guard_Pattern
         {
             if (argument < startRange || argument > endRange)
             {
-                throw new ArgumentException(string.Format("Argument {0} is out of range", argumentName));
+                throw new ArgumentException(string.Format("{0} is out of range", argumentName));
             }
         }
         #endregion
 
         #region For Double
-        public static void NumberLessThan(this IGuardClause guardClause, double argument, string argumentName, double min)
+        public static void NumberLessThan(this IGuardClause guardClause, double argument, string argumentName, double min, string minArgumentName = "")
         {
             if (argument < min)
             {
-                throw new ArgumentException(string.Format("Argument {0} is not allowing less than {1}", argumentName, min));
+                throw new ArgumentException(string.Format("{0} is not allowing less than {1}", argumentName, !string.IsNullOrWhiteSpace(minArgumentName) ? minArgumentName : min.ToString()));
             }
         }
 
-        public static void NumberGreaterThan(this IGuardClause guardClause, double argument, string argumentName, double max)
+        public static void NumberGreaterThan(this IGuardClause guardClause, double argument, string argumentName, double max, string maxArgumentName = "")
         {
             if (argument > max)
             {
-                throw new ArgumentException(string.Format("Argument {0} is not allowing more than {1}", argumentName, max));
+                throw new ArgumentException(string.Format("{0} is not allowing more than {1}", argumentName, !string.IsNullOrWhiteSpace(maxArgumentName) ? maxArgumentName : max.ToString()));
             }
         }
 
-        public static void NumberLessThanOrEqual(this IGuardClause guardClause, double argument, string argumentName, double min)
+        public static void NumberLessThanOrEqual(this IGuardClause guardClause, double argument, string argumentName, double min, string minArgumentName = "")
         {
             if (argument <= min)
             {
-                throw new ArgumentException(string.Format("Argument {0} is not allowing less than or equals to {1}", argumentName, min));
+                throw new ArgumentException(string.Format("{0} is not allowing less than or equals to {1}", argumentName, !string.IsNullOrWhiteSpace(minArgumentName) ? minArgumentName : min.ToString()));
             }
         }
 
-        public static void NumberGreaterThanOrEqual(this IGuardClause guardClause, double argument, string argumentName, double max)
+        public static void NumberGreaterThanOrEqual(this IGuardClause guardClause, double argument, string argumentName, double max, string maxArgumentName = "")
         {
             if (argument >= max)
             {
-                throw new ArgumentException(string.Format("Argument {0} is not allowing greater than or equals to {1}", argumentName, max));
+                throw new ArgumentException(string.Format("{0} is not allowing greater than or equals to {1}", argumentName, !string.IsNullOrWhiteSpace(maxArgumentName) ? maxArgumentName : max.ToString()));
             }
         }
 
@@ -258,7 +258,7 @@ namespace Guard_Pattern
         {
             if (argument == 0)
             {
-                throw new ArgumentException(string.Format("Argument {0} is not allowing 0", argumentName));
+                throw new ArgumentException(string.Format("{0} is not allowing 0", argumentName));
             }
         }
 
@@ -266,7 +266,7 @@ namespace Guard_Pattern
         {
             if (argument < 0)
             {
-                throw new ArgumentException(string.Format("Argument {0} is not allowing negative value.", argumentName));
+                throw new ArgumentException(string.Format("{0} is not allowing negative value.", argumentName));
             }
         }
 
@@ -274,7 +274,7 @@ namespace Guard_Pattern
         {
             if (argument <= 0)
             {
-                throw new ArgumentException(string.Format("Argument {0} is not allowing negative value or 0", argumentName));
+                throw new ArgumentException(string.Format("{0} is not allowing negative value or 0", argumentName));
             }
         }
 
@@ -282,41 +282,41 @@ namespace Guard_Pattern
         {
             if (argument < startRange || argument > endRange)
             {
-                throw new ArgumentException(string.Format("Argument {0} is out of range", argumentName));
+                throw new ArgumentException(string.Format("{0} is out of range", argumentName));
             }
         }
         #endregion
 
         #region For Decimal
-        public static void NumberLessThan(this IGuardClause guardClause, decimal argument, string argumentName, decimal min)
+        public static void NumberLessThan(this IGuardClause guardClause, decimal argument, string argumentName, decimal min, string minArgumentName = "")
         {
             if (argument < min)
             {
-                throw new ArgumentException(string.Format("Argument {0} is not allowing less than {1}", argumentName, min));
+                throw new ArgumentException(string.Format("{0} is not allowing less than {1}", argumentName, !string.IsNullOrWhiteSpace(minArgumentName) ? minArgumentName : min.ToString()));
             }
         }
 
-        public static void NumberGreaterThan(this IGuardClause guardClause, decimal argument, string argumentName, decimal max)
+        public static void NumberGreaterThan(this IGuardClause guardClause, decimal argument, string argumentName, decimal max, string maxArgumentName = "")
         {
             if (argument > max)
             {
-                throw new ArgumentException(string.Format("Argument {0} is not allowing more than {1}", argumentName, max));
+                throw new ArgumentException(string.Format("{0} is not allowing more than {1}", argumentName, !string.IsNullOrWhiteSpace(maxArgumentName) ? maxArgumentName : max.ToString()));
             }
         }
 
-        public static void NumberLessThanOrEqual(this IGuardClause guardClause, decimal argument, string argumentName, decimal min)
+        public static void NumberLessThanOrEqual(this IGuardClause guardClause, decimal argument, string argumentName, decimal min, string minArgumentName = "")
         {
             if (argument <= min)
             {
-                throw new ArgumentException(string.Format("Argument {0} is not allowing less than or equals to {1}", argumentName, min));
+                throw new ArgumentException(string.Format("{0} is not allowing less than or equals to {1}", argumentName, !string.IsNullOrWhiteSpace(minArgumentName) ? minArgumentName : min.ToString()));
             }
         }
 
-        public static void NumberGreaterThanOrEqual(this IGuardClause guardClause, decimal argument, string argumentName, decimal max)
+        public static void NumberGreaterThanOrEqual(this IGuardClause guardClause, decimal argument, string argumentName, decimal max, string maxArgumentName = "")
         {
             if (argument >= max)
             {
-                throw new ArgumentException(string.Format("Argument {0} is not allowing greater than or equals to {1}", argumentName, max));
+                throw new ArgumentException(string.Format("{0} is not allowing greater than or equals to {1}", argumentName, !string.IsNullOrWhiteSpace(maxArgumentName) ? maxArgumentName : max.ToString()));
             }
         }
 
@@ -324,7 +324,7 @@ namespace Guard_Pattern
         {
             if (argument == 0)
             {
-                throw new ArgumentException(string.Format("Argument {0} is not allowing 0", argumentName));
+                throw new ArgumentException(string.Format("{0} is not allowing 0", argumentName));
             }
         }
 
@@ -332,7 +332,7 @@ namespace Guard_Pattern
         {
             if (argument < 0)
             {
-                throw new ArgumentException(string.Format("Argument {0} is not allowing negative value.", argumentName));
+                throw new ArgumentException(string.Format("{0} is not allowing negative value.", argumentName));
             }
         }
 
@@ -340,7 +340,7 @@ namespace Guard_Pattern
         {
             if (argument <= 0)
             {
-                throw new ArgumentException(string.Format("Argument {0} is not allowing negative value or 0", argumentName));
+                throw new ArgumentException(string.Format("{0} is not allowing negative value or 0", argumentName));
             }
         }
 
@@ -348,41 +348,41 @@ namespace Guard_Pattern
         {
             if (argument < startRange || argument > endRange)
             {
-                throw new ArgumentException(string.Format("Argument {0} is out of range", argumentName));
+                throw new ArgumentException(string.Format("{0} is out of range", argumentName));
             }
         }
         #endregion
 
         #region For DateTime
-        public static void DateTimeLessThan(this IGuardClause guardClause, DateTime argument, string argumentName, DateTime min)
+        public static void DateTimeLessThan(this IGuardClause guardClause, DateTime argument, string argumentName, DateTime min, string minArgumentName = "", string format = "dd/MM/yyyy")
         {
             if (argument < min)
             {
-                throw new ArgumentException(string.Format("Argument {0} is not allowing less than {1}", argumentName, min));
+                throw new ArgumentException(string.Format("{0} is not allowing less than {1}", argumentName, !string.IsNullOrWhiteSpace(minArgumentName) ? minArgumentName : min.ToString(format)));
             }
         }
 
-        public static void DateTimeGreaterThan(this IGuardClause guardClause, DateTime argument, string argumentName, DateTime max)
+        public static void DateTimeGreaterThan(this IGuardClause guardClause, DateTime argument, string argumentName, DateTime max, string maxArgumentName = "", string format = "dd/MM/yyyy")
         {
             if (argument > max)
             {
-                throw new ArgumentException(string.Format("Argument {0} is not allowing more than {1}", argumentName, max));
+                throw new ArgumentException(string.Format("{0} is not allowing more than {1}", argumentName, !string.IsNullOrWhiteSpace(maxArgumentName) ? maxArgumentName : max.ToString(format)));
             }
         }
 
-        public static void DateTimeLessThanOrEqual(this IGuardClause guardClause, DateTime argument, string argumentName, DateTime min)
+        public static void DateTimeLessThanOrEqual(this IGuardClause guardClause, DateTime argument, string argumentName, DateTime min, string minArgumentName = "", string format = "dd/MM/yyyy")
         {
             if (argument <= min)
             {
-                throw new ArgumentException(string.Format("Argument {0} is not allowing less than or equals to {1}", argumentName, min));
+                throw new ArgumentException(string.Format("{0} is not allowing less than or equals to {1}", argumentName, !string.IsNullOrWhiteSpace(minArgumentName) ? minArgumentName : min.ToString(format)));
             }
         }
 
-        public static void DateTimeGreaterThanOrEqual(this IGuardClause guardClause, DateTime argument, string argumentName, DateTime max)
+        public static void DateTimeGreaterThanOrEqual(this IGuardClause guardClause, DateTime argument, string argumentName, DateTime max, string maxArgumentName = "", string format = "dd/MM/yyyy")
         {
             if (argument >= max)
             {
-                throw new ArgumentException(string.Format("Argument {0} is not allowing greater than or equals to {1}", argumentName, max));
+                throw new ArgumentException(string.Format("{0} is not allowing greater than or equals to {1}", argumentName, !string.IsNullOrWhiteSpace(maxArgumentName) ? maxArgumentName : max.ToString(format)));
             }
         }
 
@@ -390,41 +390,83 @@ namespace Guard_Pattern
         {
             if (argument < startRange || argument > endRange)
             {
-                throw new ArgumentException(string.Format("Argument {0} is out of range", argumentName));
+                throw new ArgumentException(string.Format("{0} is out of range", argumentName));
+            }
+        }
+        #endregion
+
+        #region For DateTimeOffset
+        public static void DateTimeOffsetLessThan(this IGuardClause guardClause, DateTimeOffset argument, string argumentName, DateTimeOffset min, string minArgumentName = "", string format = "dd/MM/yyyy")
+        {
+            if (argument < min)
+            {
+                throw new ArgumentException(string.Format("{0} is not allowing less than {1}", argumentName, !string.IsNullOrWhiteSpace(minArgumentName) ? minArgumentName : min.ToString(format)));
+            }
+        }
+
+        public static void DateTimeOffsetGreaterThan(this IGuardClause guardClause, DateTimeOffset argument, string argumentName, DateTimeOffset max, string maxArgumentName = "", string format = "dd/MM/yyyy")
+        {
+            if (argument > max)
+            {
+                throw new ArgumentException(string.Format("{0} is not allowing more than {1}", argumentName, !string.IsNullOrWhiteSpace(maxArgumentName) ? maxArgumentName : max.ToString(format)));
+            }
+        }
+
+        public static void DateTimeOffsetLessThanOrEqual(this IGuardClause guardClause, DateTimeOffset argument, string argumentName, DateTimeOffset min, string minArgumentName = "", string format = "dd/MM/yyyy")
+        {
+            if (argument <= min)
+            {
+                throw new ArgumentException(string.Format("{0} is not allowing less than or equals to {1}", argumentName, !string.IsNullOrWhiteSpace(minArgumentName) ? minArgumentName : min.ToString(format)));
+            }
+        }
+
+        public static void DateTimeOffsetGreaterThanOrEqual(this IGuardClause guardClause, DateTimeOffset argument, string argumentName, DateTimeOffset max, string maxArgumentName = "", string format = "dd/MM/yyyy")
+        {
+            if (argument >= max)
+            {
+                throw new ArgumentException(string.Format("{0} is not allowing greater than or equals to {1}", argumentName, !string.IsNullOrWhiteSpace(maxArgumentName) ? maxArgumentName : max.ToString(format)));
+            }
+        }
+
+        public static void DateTimeOffsetOutOfRange(this IGuardClause guardClause, DateTimeOffset argument, string argumentName, DateTimeOffset startRange, DateTimeOffset endRange)
+        {
+            if (argument < startRange || argument > endRange)
+            {
+                throw new ArgumentException(string.Format("{0} is out of range", argumentName));
             }
         }
         #endregion
 
         #region For Timespan
-        public static void TimeSpanLessThan(this IGuardClause guardClause, TimeSpan argument, string argumentName, TimeSpan min)
+        public static void TimeSpanLessThan(this IGuardClause guardClause, TimeSpan argument, string argumentName, TimeSpan min, string minArgumentName = "", string format = @"hh\:mm\:ss")
         {
             if (argument < min)
             {
-                throw new ArgumentException(string.Format("Argument {0} is not allowing less than {1}", argumentName, min));
+                throw new ArgumentException(string.Format("{0} is not allowing less than {1}", argumentName, !string.IsNullOrWhiteSpace(minArgumentName) ? minArgumentName : min.ToString(format)));
             }
         }
 
-        public static void TimeSpanGreaterThan(this IGuardClause guardClause, TimeSpan argument, string argumentName, TimeSpan max)
+        public static void TimeSpanGreaterThan(this IGuardClause guardClause, TimeSpan argument, string argumentName, TimeSpan max, string maxArgumentName = "", string format = @"hh\:mm\:ss")
         {
             if (argument > max)
             {
-                throw new ArgumentException(string.Format("Argument {0} is not allowing more than {1}", argumentName, max));
+                throw new ArgumentException(string.Format("{0} is not allowing more than {1}", argumentName, !string.IsNullOrWhiteSpace(maxArgumentName) ? maxArgumentName : max.ToString(format)));
             }
         }
 
-        public static void TimeSpanLessThanOrEqual(this IGuardClause guardClause, TimeSpan argument, string argumentName, TimeSpan min)
+        public static void TimeSpanLessThanOrEqual(this IGuardClause guardClause, TimeSpan argument, string argumentName, TimeSpan min, string minArgumentName = "", string format = @"hh\:mm\:ss")
         {
             if (argument <= min)
             {
-                throw new ArgumentException(string.Format("Argument {0} is not allowing less than or equals to {1}", argumentName, min));
+                throw new ArgumentException(string.Format("{0} is not allowing less than or equals to {1}", argumentName, !string.IsNullOrWhiteSpace(minArgumentName) ? minArgumentName : min.ToString(format)));
             }
         }
 
-        public static void TimeSpanGreaterThanOrEqual(this IGuardClause guardClause, TimeSpan argument, string argumentName, TimeSpan max)
+        public static void TimeSpanGreaterThanOrEqual(this IGuardClause guardClause, TimeSpan argument, string argumentName, TimeSpan max, string maxArgumentName = "", string format = @"hh\:mm\:ss")
         {
             if (argument >= max)
             {
-                throw new ArgumentException(string.Format("Argument {0} is not allowing greater than or equals to {1}", argumentName, max));
+                throw new ArgumentException(string.Format("{0} is not allowing greater than or equals to {1}", argumentName, !string.IsNullOrWhiteSpace(maxArgumentName) ? maxArgumentName : max.ToString(format)));
             }
         }
 
@@ -432,7 +474,7 @@ namespace Guard_Pattern
         {
             if (argument < startRange || argument > endRange)
             {
-                throw new ArgumentException(string.Format("Argument {0} is out of range", argumentName));
+                throw new ArgumentException(string.Format("{0} is out of range", argumentName));
             }
         }
         #endregion
@@ -449,7 +491,7 @@ namespace Guard_Pattern
             Guard.Against.NullOrEmpty(argument, argumentName);
             if (!IsValidURL(argument))
             {
-                throw new ArgumentException(string.Format("Argument {0} is not valid URL", argumentName));
+                throw new ArgumentException(string.Format("{0} is not valid URL", argumentName));
             }
         }
 
@@ -458,7 +500,7 @@ namespace Guard_Pattern
             Guard.Against.NullOrEmpty(argument, argumentName);
             if (!IsValidEmailId(argument))
             {
-                throw new ArgumentException(string.Format("Argument {0} is not valid emailid", argumentName));
+                throw new ArgumentException(string.Format("{0} is not valid emailid", argumentName));
             }
         }
 
@@ -467,7 +509,7 @@ namespace Guard_Pattern
             Guard.Against.NullOrEmpty(argument, argumentName);
             if (!IsValidGuid(argument))
             {
-                throw new ArgumentException(string.Format("Argument {0} is not valid Guid", argumentName));
+                throw new ArgumentException(string.Format("{0} is not valid Guid", argumentName));
             }
         }
 
@@ -498,7 +540,7 @@ namespace Guard_Pattern
         {
             if (argument == true)
             {
-                throw new ArgumentException(string.Format("Argument {0} is not allowing to be true", argumentName));
+                throw new ArgumentException(string.Format("{0} is not allowing to be true", argumentName));
             }
         }
 
@@ -506,7 +548,7 @@ namespace Guard_Pattern
         {
             if (argument == false)
             {
-                throw new ArgumentException(string.Format("Argument {0} is not allowing to be false", argumentName));
+                throw new ArgumentException(string.Format("{0} is not allowing to be false", argumentName));
             }
         }
         #endregion

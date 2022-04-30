@@ -8,7 +8,7 @@ namespace Guard_Pattern.Test
         {
             if (argument > Int16.MaxValue)
             {
-                throw new ArgumentException(string.Format("Argument {0} is not allowing to be more than Int16 max limit", argumentName));
+                throw new ArgumentException(string.Format("{0} is not allowing to be more than Int16 max limit", argumentName));
             }
         }
     }
